@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beyond Ventures - Dubai Scholars' Commerce Magazine</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            background-image: linear-gradient(to bottom, #f8f9fa 0%, #e8eaf6 100%);
+        }
+        
+        header {
+            background-color: #1a237e;
+            color: white;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 50% 50%, rgba(57, 73, 171, 0.4) 0%, rgba(26, 35, 126, 0.8) 70%);
+            z-index: 0;
+        }
+        
+        header > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        nav {
+            background-color: #283593;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            margin: 0.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        nav a:hover {
+            background-color: #3949ab;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        nav a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        nav a:hover::after {
+            width: 80%;
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 2.5rem auto;
+            padding: 0 2rem;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 4rem 1.5rem;
+            background-color: #e8eaf6;
+            border-radius: 12px;
+            margin-bottom: 2.5rem;
+            background-image: url('/api/placeholder/1200/400');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 35, 126, 0.7) 0%, rgba(57, 73, 171, 0.4) 100%);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+            line-height: 1.8;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        
+        .card h2 {
+            color: #1a237e;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #e8eaf6;
+            padding-bottom: 0.8rem;
+            font-size: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .card h2::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #3949ab;
+        }
+        
+        .card p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .team-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2.5rem;
+        }
+        
+        .team-member {
+            background-color: #e8eaf6;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        .team-member:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        
+        .team-member h3 {
+            color: #1a237e;
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+        }
+        
+        .team-member p.role {
+            font-weight: bold;
+            margin-bottom: 1.2rem;
+            color: #3949ab;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            display: inline-block;
+            padding: 0 5px;
+        }
+        
+        .team-member p.role::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background-color: #3949ab;
+        }
+        
+        .team-member .profile-pic {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem auto;
+            border: 4px solid #1a237e;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+        
+        .team-member:hover .profile-pic {
+            transform: scale(1.05);
+        }
+        
+        .themes {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2.5rem;
+        }
+        
+        .theme {
+            background-color: #e8eaf6;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        .theme:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        
+        .theme h3 {
+            color: #1a237e;
+            margin-bottom: 1.2rem;
+            font-size: 1.4rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .theme h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background-color: #3949ab;
+        }
+        
+        .theme img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .theme:hover img {
+            transform: scale(1.03);
+        }
+        
+        .button {
+            display: inline-block;
+            background-color: #1a237e;
+            color: white;
+            padding: 0.9rem 2rem;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: #3949ab;
+            transition: all 0.3s ease;
+            z-index: -1;
+            border-radius: 30px;
+        }
+        
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+        
+        .button:hover::before {
+            width: 100%;
+        }
+        
+        footer {
+            background-color: #1a237e;
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 50% 50%, rgba(57, 73, 171, 0.4) 0%, rgba(26, 35, 126, 0.8) 70%);
+            z-index: 0;
+        }
+        
+        footer > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        ul {
+            margin: 0 auto 1.5rem;
+            max-width: 800px;
+            list-style-position: inside;
+            text-align: left;
+        }
+        
+        .centered-list {
+            list-style-position: inside;
+            text-align: center;
+        }
+        
+        .submission-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            justify-content: center;
+        }
+        
+        .logo {
+            max-width: 150px;
+            height: auto;
+            margin-bottom: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .changemakers {
+            margin-top: 3rem;
+            text-align: center;
+        }
+        
+        .section-heading {
+            color: #3949ab;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 12px;
+        }
+        
+        .section-heading::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #3949ab;
+        }
+        
+        .changemakers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2.5rem;
+        }
+        
+        .changemaker {
+            background-color: #e8eaf6;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .changemaker:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+        
+        .changemaker img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .changemaker:hover img {
+            transform: scale(1.03);
+        }
+        
+        .changemaker h4 {
+            color: #1a237e;
+            margin-bottom: 0.8rem;
+            font-size: 1.5rem;
+        }
+        
+        .changemaker p.type {
+            font-weight: bold;
+            color: #3949ab;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            display: inline-block;
+            padding: 0 8px;
+        }
+        
+        .changemaker p.type::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background-color: #3949ab;
+        }
+        
+        .changemaker p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+        
+        /* Decorative elements */
+        .decorative-line {
+            height: 3px;
+            background: linear-gradient(90deg, transparent 0%, #3949ab 50%, transparent 100%);
+            margin: 2rem auto;
+            width: 50%;
+            opacity: 0.6;
+        }
+        
+        .decorative-dots {
+            display: flex;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+        
+        .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: #3949ab;
+            margin: 0 4px;
+        }
+        
+        .dot:nth-child(2) {
+            width: 10px;
+            height: 10px;
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .page {
+            animation: fadeIn 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="/api/placeholder/150/150" alt="Beyond Ventures Logo" class="logo">
+        <h1>Beyond Ventures</h1>
+        <p>Dubai Scholars Private School's Commerce Magazine</p>
+    </header>
+    
+    <nav>
+        <a href="#home" onclick="showPage('home')">Home</a>
+        <a href="#about" onclick="showPage('about')">About</a>
+        <a href="#team" onclick="showPage('team')">Our Team</a>
+        <a href="#themes" onclick="showPage('themes')">Themes</a>
+        <a href="#submit" onclick="showPage('submit')">Submit</a>
+    </nav>
+    
+    <main id="content">
+        <!-- Home Page Content (Default) -->
+        <div id="home" class="page">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Welcome to Beyond Ventures</h1>
+                    <p>Inspiring students through real-world success stories, innovative business ideas, and thought leadership.</p>
+                    <a href="#submit" onclick="showPage('submit')" class="button">Submit Your Article</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>This Year's Theme</h2>
+                <div class="decorative-dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <p>We're excited to announce this year's theme:</p>
+                <h3 style="color: #3949ab; margin: 1.5rem 0; text-align: center; font-size: 1.8rem;">"From Ideas to Impact: The New Wave of Change Makers"</h3>
+                <p>This theme focuses on the journey of entrepreneurs, innovators, and thought leaders who have taken their ideas and transformed them into impactful solutions. It highlights stories of resilience, creativity, and determination, and aims to inspire students to think critically about how they can contribute to positive change in their communities and the world.</p>
+                <div class="decorative-line"></div>
+                <p>Through this theme, we aim to feature stories of both well-established giants and emerging underdogs who are making a difference, and encourage students to explore how they can be part of this new wave of change-makers.</p>
+                <a href="#themes" onclick="showPage('themes')" class="button" style="margin-top: 2rem;">Explore Our Themes</a>
+            </div>
+        </div>
+        
+        <!-- About Page Content -->
+        <div id="about" class="page" style="display: none;">
+            <div class="card">
+                <h2>About Beyond Ventures</h2>
+                <div class="decorative-dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <p>Beyond Ventures is Dubai Scholars Private School's first-ever commerce magazine, dedicated to inspiring students by showcasing real-world success stories, innovative business ideas, and thought leadership.</p>
+                <div class="decorative-line"></div>
+                <p>The magazine aims to create a platform where students can learn from industry giants, explore entrepreneurial journeys, and foster creativity, entrepreneurship, and innovation.</p>
+                <div class="decorative-line"></div>
+                <p>Through its features, Beyond Ventures encourages students to think critically about global challenges and explore innovative solutions to make a lasting impact on the world.</p>
+            </div>
+        </div>
+        
+        <!-- Team Page Content -->
+        <div id="team" class="page" style="display: none;">
+            <div class="card">
+                <h2>Meet Our Team</h2>
+                <div class="decorative-dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <p>The dedicated individuals behind Beyond Ventures:</p>
+                
+                <div class="team-members">
+                    <div class="team-member">
+                        <img src="/api/placeholder/120/120" alt="Mahin Kashyap" class="profile-pic">
+                        <h3>Mahin Kashyap</h3>
+                        <p class="role">Founder & Editor-in-Chief</p>
+                        <p>The driving force behind Beyond Ventures, Mahin oversees the editorial content and ensures each article aligns with the publication's vision of showcasing real-world success stories.</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <img src="/api/placeholder/120/120" alt="Samyukta Shanker" class="profile-pic">
+                        <h3>Samyukta Shanker</h3>
+                        <p class="role">Content Lead</p>
+                        <p>Responsible for leading content creation, developing and curating ideas for articles, interviews, and features, ensuring content is engaging and informative.</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <img src="/api/placeholder/120/120" alt="Eleanor Pereira" class="profile-pic">
+                        <h3>Eleanor Pereira</h3>
+                        <p class="role">Logistical & PR Manager</p>
+                        <p>Manages logistics, communication with external partners, sponsors, and contributors, while also handling the magazine's social media presence.</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <img src="/api/placeholder/120/120" alt="Caroline Jickson" class="profile-pic">
+                        <h3>Caroline Jickson</h3>
+                        <p class="role">Marketing Director</p>
+                        <p>In charge of marketing and promoting Beyond Ventures, developing strategies to engage students and create buzz around the magazine's release.</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <img src="/api/placeholder/120/120" alt="Reyaansh Dugad" class="profile-pic">
+                        <h3>Reyaansh Dugad</h3>
+                        <p class="role">Senior Coordinator</p>
+                        <p>Helps spread the word about Beyond Ventures and assists with public relations. Reyaansh plays a key role in expanding the magazine's reach and building connections with the community.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Themes Page Content -->
+        <div id="themes" class="page" style="display: none;">
+            <div class="card">
+                <h2>This Year's Themes</h2>
+                <div class="decorative-dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <p>Under our overarching theme "From Ideas to Impact: The New Wave of Change Makers," we have two exciting sub-themes for submissions:</p>
+                
+                <div class="themes">
+                    <div class="theme">
+                        <img src="/api/placeholder/400/200" alt="Solving Global Problems">
+                        <h3>Solving Global Problems with Innovative Ideas</h3>
+                        <p>This theme encourages students to explore how creative and impactful ideas can be used to tackle some of the world's most pressing issues. They must link their ideas to one of the United Nations Sustainable Development Goals (SDGs) to show how innovation can contribute to global progress.</p>
+                    </div>
+                    
+                    <div class="theme">
+                        <img src="/api/placeholder/400/200" alt="Fun and Creative Ideas">
+                        <h3>Fun and Creative Ideas</h3>
+                        <p>This theme focuses on light-hearted, imaginative, and out-of-the-box ideas. Whether it's a new way to engage in sports, a creative social initiative, or an unusual innovation, this theme is all about fun and thinking outside the conventional frameworks. Students are encouraged to think about how ideas can be both entertaining and impactful.</p>
+                    </div>
+                </div>
+                
+                <div class="changemakers">
+                    <h3 class="section-heading">Industry Giants vs. Underdogs</h3>
+                    <p>We believe in showcasing diverse journeys to success. While industry giants demonstrate what's possible with persistence and vision, emerging underdogs remind us that innovation can come from anywhere. Both paths offer valuable lessons in entrepreneurship and making an impact.</p>
+                    
+                    <div class="decorative-line"></div>
+                    
+                    <div class="changemakers-grid">
+                        <div class="changemaker">
+                            <img src="/api/placeholder/300/200" alt="Zubair Junjunia">
+                            <h4>Zubair Junjunia</h4>
+                            <p class="type">Industry Giant</p>
+                            <p>Educational activist and social entrepreneur who founded ZNotes at just 16 years old. His platform has reached nearly 4 million students globally, democratizing education through free resources. A One Young World ambassador, Cambridge University DEFI advisory board member, and EY Foundation Youth Advisory Board member, Zubair advocates passionately for the UN's Sustainable Development Goals. Despite his impressive achievements, including speaking at the UN General Assembly and TEDx events, he balances his professional pursuits with personal passions as a marathon runner, triathlete, and skater—all while holding a Master's in Mathematics from UCL.</p>
+                        </div>
+                        
+                        <div class="changemaker">
+                            <img src="/api/placeholder/300/200" alt="Soheil Var">
+                            <h4>Soheil Var</h4>
+                            <p class="type">Emerging Underdog</p>
+                            <p>A rising entrepreneur with a remarkable ability to transform challenges into opportunities. Bridging technology and business expertise, Soheil has developed a keen eye for spotting emerging trends and leveraging them to build successful ventures. His journey as a self-made business leader exemplifies resilience, creativity, and determination. What sets Soheil apart is his unwavering commitment to creating positive impact through innovative solutions, inspiring others to follow his path of turning ideas into meaningful action.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="decorative-dots" style="margin-top: 2.5rem;">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                
+                <a href="#submit" onclick="showPage('submit')" class="button" style="margin-top: 1.5rem;">Submit Your Article</a>
+            </div>
+        </div>
+        
+        <!-- Submit Page Content -->
+        <div id="submit" class="page" style="display: none;">
+            <div class="card">
+                <h2>Submit Your Article</h2>
+                <div class="decorative-dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <p>We invite all students to contribute to Beyond Ventures by submitting their articles that align with our themes.</p>
+                
+                <h3 style="margin-top: 2rem; color: #3949ab; text-align: center; font-size: 1.4rem;">Submission Guidelines:</h3>
+                <div class="decorative-line" style="width: 30%; margin: 1rem auto 1.5rem;"></div>
+                
+                <ul class="centered-list">
+                    <li><strong>Word Limit:</strong> 450 words maximum</li>
+                    <li><strong>Plagiarism Policy:</strong> All submissions must be original work. Plagiarism will not be tolerated, and any submission found to have more than 10% plagiarized content will be disqualified.</li>
+                    <li><strong>Format:</strong> Please submit your work in a clear, well-structured format with proper grammar and punctuation.</li>
+                    <li><strong>Theme Alignment:</strong> Ensure your submission aligns with one of the two themes mentioned above.</li>
+                    <li><strong>Citations:</strong> If you reference any external sources, please include proper citations.</li>
+                    <li><strong>Images:</strong> If you include images, ensure they are properly credited and copyright-free.</li>
+                    <li><strong>Deadline:</strong> Please check the submission form for the current deadline.</li>
+                </ul>
+                
+                <p style="margin-top: 2rem;">Select the appropriate link below to submit your article:</p>
+                
+                <div class="submission-buttons">
+                    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=WnthKhfesEWVXql-le9m77WZlt3KfkdMjW4fGL6iRTVUNlgxUkhKQVpUQjJJQTBaTEpKWFc4TklFSS4u" class="button" target="_blank">Dubai Scholars Students</a>
+                    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=WnthKhfesEWVXql-le9m77WZlt3KfkdMjW4fGL6iRTVUMjIzOEVQMzRXMExGTFZCRkU0MEJWQzlPSS4u" class="button" target="_blank">External Students</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Beyond Ventures | Dubai Scholars Private School</p>
+        <div class="decorative-dots" style="margin: 1rem auto;">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+        <p>For inquiries, contact us at: identity@dubaischolars.com</p>
+    </footer>
+    
+<script>
+    function showPage(pageId) {
+        // Hide all pages
+        const pages = document.querySelectorAll('.page');
+        pages.forEach(page => {
+            page.style.display = 'none';
+        });
+        
+        // Show the selected page
+        document.getElementById(pageId).style.display = 'block';
+        
+        // Scroll to top
+        window.scrollTo(0, 0);
+    }
+</script>
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.style.display = 'none';
+            });
+            
+            // Show the selected page
+            document.getElementById(pageId).style.display = 'block';
+            
+            // Scroll to top
+            window.scrollTo(0, 0
